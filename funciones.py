@@ -1,4 +1,5 @@
 from varglobal import ventastotales
+from grafico import GraficoDinamico
 
 import time
 
@@ -75,7 +76,10 @@ def estadisticas(dia):
     sumaventas = 0
     for ventas in ventasxdias:
        sumaventas += ventas[1]
-    promedio_dia= sumaventas/len(ventasxdias)
+    try:
+        promedio_dia= sumaventas/len(ventasxdias)
+    except ZeroDivisionError:
+        promedio_dia = 0
     print(f" el Promedio del este dia es: {promedio_dia}")
 
     sumaventas = 0
@@ -84,7 +88,10 @@ def estadisticas(dia):
         for ventas in ventasxdia:
            i += 1
            sumaventas += ventas[1]
-        promediototal= sumaventas/i
+        try:
+            promediototal= sumaventas/i
+        except ZeroDivisionError:
+            promediototal = 0
     print(f" el Promedio del este total es: {promediototal}")
     diferencia = abs(promediototal-promedio_dia)
     if promedio_dia<promediototal:
@@ -92,6 +99,20 @@ def estadisticas(dia):
     elif promediototal<promedio_dia:
         print(f"el promedio del dia es mayor al promedio total, la diferencia es de: {diferencia}")
 
+    if input("desea ver un grafico con los promedios? si/no").lower() == "si":
+
+        i = 1
+        y = []
+        for ventasxdia in ventastotales:
+                i += 1
+                ventasdeldia = 0
+                for ventas in ventasxdia:
+                    ventasdeldia += ventas[1]
+                y.append(ventasdeldia)
+        if y:
+            grafico = GraficoDinamico(y)
+        else:
+            print("ERROR: NO HAY DATOS")
 
                      
 def retraso(x = 0.3):
