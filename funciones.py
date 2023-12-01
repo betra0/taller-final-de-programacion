@@ -68,6 +68,30 @@ def mostrarventas(dia):
         else: 
             break   
 
+def estadisticas(dia):
+    #VENTAS DEL DIA 
+    
+    ventasxdias = ventastotales[dia-1]
+    sumaventas = 0
+    for ventas in ventasxdias:
+       sumaventas += ventas[1]
+    promedio_dia= sumaventas/len(ventasxdias)
+    print(f" el Promedio del este dia es: {promedio_dia}")
+
+    sumaventas = 0
+    i= 1
+    for ventasxdia in ventastotales:
+        for ventas in ventasxdia:
+           i += 1
+           sumaventas += ventas[1]
+        promediototal= sumaventas/i
+    print(f" el Promedio del este total es: {promediototal}")
+    diferencia = abs(promediototal-promedio_dia)
+    if promedio_dia<promediototal:
+        print(f"el promedio del dia es menor al promedio total, la diferencia es de: {diferencia}")
+    elif promediototal<promedio_dia:
+        print(f"el promedio del dia es mayor al promedio total, la diferencia es de: {diferencia}")
+
 
                      
 def retraso(x = 0.3):

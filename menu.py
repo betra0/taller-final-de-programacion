@@ -1,14 +1,6 @@
-"""   Programa Ventas Diarias 
-
-1 Registrar ventas  por dia 
- """
-#Leer base de datos 
-
 
 from funciones import *
 from varglobal import ventastotales, agregardia
-
-
 
 while True:
 
@@ -22,7 +14,7 @@ while True:
 
             1) Registrar Ventas 
             2) Mostrar Ventas 
-            X) Estadisticas(Proximamente)
+            X) ver estadisticas de vetas(Proximamente)
             4) Dia siguiente
              O escriba salir para salir
 
@@ -36,7 +28,7 @@ while True:
         mostrarventas(dia)
         
     elif opcion == "3":
-        pass
+        estadisticas(dia)
 
     elif opcion == "4":
         agregardia()
